@@ -12,68 +12,88 @@ function App() {
       ":" +
       (seconds < 10 ? "0" + seconds : seconds)
     );
-  };
+  }
 
   const changeTime = (amount, type) => {
-    if(type == "break"){
-      if(breakTime < 60 && amount < 0) {
-        return
+    if (type == "break") {
+      if (breakTime < 60 && amount < 0) {
+        return;
       }
-      setBreakTime((prev) => prev + amount)
-    }else {
-      if(sessionTime < 60 && amount < 0) {
-        return
+      setBreakTime((prev) => prev + amount);
+    } else {
+      if (sessionTime < 60 && amount < 0) {
+        return;
       }
-      setSessionTime((prev) => prev + amount)
-      if(!timerOn){
-        setDisplayTime(sessionTime + amount)
+      setSessionTime((prev) => prev + amount);
+      if (!timerOn) {
+        setDisplayTime(sessionTime + amount);
       }
     }
+  };
+
+  const controlTime = () => {
+
   }
 
   return (
     <div className="center-align">
-    <h1>25 + 5 Clock / Pomodoro Clock</h1>
+      <h1>25 + 5 Clock / Pomodoro Clock</h1>
 
-    <div className="dual-container">
+      <div className="dual-container">
         <Length
-        title ={"break length"}
-        changeTime={changeTime}
-        type={"break"}
-        time={breakTime}
-        formatTime={formatTime}
+          title={"break length"}
+          changeTime={changeTime}
+          type={"break"}
+          time={breakTime}
+          formatTime={formatTime}
         />
-
-      <Length
-        title ={"session length"}
-        changeTime={changeTime}
-        type={"session"}
-        time={sessionTime}
-        formatTime={formatTime}
+        <Length
+          title={"session length"}
+          changeTime={changeTime}
+          type={"session"}
+          time={sessionTime}
+          // the error fixed by removing comma arround the formatTime inside bracket.
+          formatTime={formatTime}
         />
+      </div>
 
-      <h1> {formatTime(displayTime)} </h1>
-    </div>
+        <h1> {formatTime(displayTime)} </h1>
+
+        <button className="btn-large deep-purple lighten-2" onClick={controlTime}>
+          {timerOn ? (
+            <i className="material-icons">pause_circle_filled</i>
+          ) : (
+            <i className="material-icons">play_circle_filled</i>
+
+          )}
+        </button>
+
+            <button className="btn-large deep-purple lighten-2">
+            <i className="material-icons">autorenew</i>
+
+            </button>
     </div>
   );
 }
-
-
 
 function Length({ title, changeTime, type, time, formatTime }) {
   return (
     <div>
       <h3>{title}</h3>
       <div className="time-sets">
-        <button onClick = {() => changeTime(-60, type)} className="btn-small deep-purple lighten-2">
+        <button
+          onClick={() => changeTime(-60, type)}
+          className="btn-small deep-purple lighten-2"
+        >
           <i className="material-icons">arrow_downward</i>
         </button>
         {/* this shows an error "formatTime()" is not a funtion but infact that is already a function, so now I am working on that why it shows such error */}
-       
+
         <h3> {formatTime(time)} </h3>
 
-        <button className="btn-small deep-purple lighten-2"
-        onClick = {() => changeTime(60, type)}
+        <button
+          className="btn-small deep-purple lighten-2"
+          onClick={() => changeTime(60, type)}
         >
           <i className="material-icons">arrow_upward</i>
         </button>
