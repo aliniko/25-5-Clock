@@ -1,11 +1,17 @@
 body{
-    color: white;
+    color: rgb(61, 56, 56);
     background-color: rgba(17, 16, 49, 0.945);
+    background-image: url(./img/clock-medium.jpg);
+    background-position: center; 
+    background-repeat: no-repeat;
+    text-align: center;
+    margin: auto;
+    height: 200px;
 }
 .dual-container{
     display: grid;
     grid-template-columns: 1fr 1fr;
-    width: 700px;
+    width: 650px;
     margin: auto;
     justify-items: center;
     align-items: center;
@@ -13,7 +19,17 @@ body{
 
 .time-sets{
     display: grid;
-    grid-template-columns: 50px 200px 50px;
+    grid-template-columns: 50px 150px 50px;
     justify-items: center;
     align-items: center;
+}
+
+.displayTime {
+    background-color: rgba(209, 209, 90, 0.664);
+    align-content: center;
+    align-items: center;
+    /* width: 200px; */
+    margin: 2em 20em;
+    padding: 5px;
+    border-radius: 8px;
 }
