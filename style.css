@@ -2,7 +2,7 @@ body{
     color: rgb(61, 56, 56);
     background-color: rgba(17, 16, 49, 0.945);
     background-image: url(./img/clock-medium.jpg);
-    background-position: center; 
+    background-position: center center; 
     background-repeat: no-repeat;
     text-align: center;
     margin: auto;
@@ -12,6 +12,7 @@ body{
     display: grid;
     grid-template-columns: 1fr 1fr;
     width: 650px;
+    height: 30vh;
     margin: auto;
     justify-items: center;
     align-items: center;
